@@ -154,7 +154,18 @@ span{
     display: flex;
     flex-direction: column;
     padding: 0px 30px;
+}
 
+.validation_error{
+    font-size: 9px;
+    font-style: italic;
+    margin-top: 5px;
+    display: none;
+}
+
+.validation_error_message{
+    color: hsl(0, 100%, 67%);
+    display: inline;
 }
 
 @media only screen and (max-width: 1440px) {
