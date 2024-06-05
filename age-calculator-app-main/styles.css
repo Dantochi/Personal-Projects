@@ -18,6 +18,15 @@
     src: url('./assets/fonts/Poppins-ExtraBoldItalic.ttf');
 }
 
+:root{
+   --light: hsl(0, 100%, 67%);
+   --white: hsl(0, 0%, 100%);
+   --off-white: hsl(0, 0%, 94%);
+   --light-grey: hsl(0, 0%, 86%);
+   --smokey-grey: hsl(0, 1%, 44%);
+   --off-black: hsl(0, 0%, 8%);
+}
+
 body{
     background-color: hsl(0, 0%, 94%);
     display: flex;
@@ -73,9 +82,17 @@ input{
     padding: 0px 11px;
 }
 
+input{
+    --input-color: hsl(259, 100%, 65%);
+}
+
 input[type=text]:focus{
-    border: 1px solid hsl(259, 100%, 65%);
+    border: 1px solid var(--input-color);
     outline: none;
+}
+
+.input_error_color{
+    border-color: hsl(0, 100%, 67%);
 }
 
 .input-container{
@@ -166,6 +183,10 @@ span{
 .validation_error_message{
     color: hsl(0, 100%, 67%);
     display: inline;
+}
+
+.label_error_color{
+    color: hsl(0, 100%, 67%);
 }
 
 @media only screen and (max-width: 1440px) {

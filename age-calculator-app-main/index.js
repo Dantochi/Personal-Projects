@@ -27,33 +27,51 @@ button.addEventListener('click', function(event){
 });
 
 function updateDate(){
+    let day_input = document.getElementById('day')
+    let month_input = document.getElementById('month')
+    let year_input = document.getElementById('year')
     let birthday = Number(document.getElementById('day').value);
     let birth_month = Number(document.getElementById('month').value);
     let birth_year = Number(document.getElementById('year').value);
+    let day_label = document.getElementById('day-label')
+    let month_label = document.getElementById('month-label')
+    let year_label = document.getElementById('year-label')
     day_span.innerHTML = days
     // Checking for empty birthday input
     if (birthday === 0){
         let day_error = document.getElementById('day_error')
         day_error.classList.add('validation_error_message')
+        day_label.classList.add('label_error_color')
+        day_input.classList.add('input_error_color')
     }
     else{
         day_error.classList.remove('validation_error_message')
+        day_label.classList.remove('label_error_color')
+        day_input.classList.remove('input_error_color')
     }
     // Checking for empty birth_month input
     if (birth_month === 0){
         let month_error = document.getElementById('month_error')
         month_error.classList.add('validation_error_message')
+        month_label.classList.add('label_error_color')
+        month_input.classList.add('input_error_color')
     }
     else{
         month_error.classList.remove('validation_error_message')
+        month_label.classList.remove('label_error_color')
+        month_input.classList.remove('input_error_color')
     }
     // Checking for empty birth_year input
     if (birth_year === 0){
         let year_error = document.getElementById('year_error')
         year_error.classList.add('validation_error_message')
+        year_label.classList.add('label_error_color')
+        year_input.classList.add('input_error_color')
     }
     else{
         year_error.classList.remove('validation_error_message')
+        year_label.classList.remove('label_error_color')
+        day_input.classList.remove('input_error_color')
     }
     // Calculating age in years and months if form is not empty
     if(birth_month <= current_month){
