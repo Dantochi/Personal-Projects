@@ -10,12 +10,11 @@ refresh the values of the form input
 
 // How to get the date?
 // 
-
-
 let date = new Date();
 let days = date.getDate();
 let current_month = date.getMonth(); // Here the month starts from 0 instead of one.
 let current_year = date.getFullYear();
+let number_of_months = 12
 let years_span = document.getElementById("year-value");
 let month_span = document.getElementById("month-value");
 let day_span = document.getElementById("day-value");
@@ -25,6 +24,13 @@ button.addEventListener('click', function(event){
     event.preventDefault(); // This is used to prevent the form default of submitting and leaving the form empty
     updateDate();
 });
+
+function getDaysInMonth(year, month) {
+    // Create a date object for the 1st of the next month
+    let date = new Date(year, month + 1, 0);
+    // The getDate() method returns the day of the month (1-31) for the given date
+    return date.getDate();
+}
 
 function updateDate(){
     let day_input = document.getElementById('day')
@@ -44,6 +50,12 @@ function updateDate(){
         day_label.classList.add('label_error_color')
         day_input.classList.add('input_error_color')
     }
+    else if(birthday > getDaysInMonth(birth_year, birth_month)){
+        day_error.classList.add('validation_error_message')
+        day_label.classList.add('label_error_color')
+        day_input.classList.add('input_error_color')
+        day_error.innerHTML = "Must be a valid day"
+    }
     else{
         day_error.classList.remove('validation_error_message')
         day_label.classList.remove('label_error_color')
@@ -55,6 +67,12 @@ function updateDate(){
         month_error.classList.add('validation_error_message')
         month_label.classList.add('label_error_color')
         month_input.classList.add('input_error_color')
+    }
+    else if(birth_month > number_of_months){
+        month_error.classList.add('validation_error_message')
+        month_label.classList.add('label_error_color')
+        month_input.classList.add('input_error_color')
+        month_error.innerHTML = "Must be a valid month"
     }
     else{
         month_error.classList.remove('validation_error_message')
@@ -68,10 +86,13 @@ function updateDate(){
         year_label.classList.add('label_error_color')
         year_input.classList.add('input_error_color')
     }
+    else if(birth_year >= current_year){
+        year_error.innerHTML = "Must be in the past"
+    }
     else{
         year_error.classList.remove('validation_error_message')
         year_label.classList.remove('label_error_color')
-        day_input.classList.remove('input_error_color')
+        year_input.classList.remove('input_error_color')
     }
     // Calculating age in years and months if form is not empty
     if(birth_month <= current_month){
@@ -95,3 +116,8 @@ If all of the forms are empty attach the class validation error message to all t
 
 
 */
+
+// Next thing is to make sure that this is a valid date 
+// So there is one constant which is the number of months 
+// The variable is the year and the number of days 
+// So we could actually do this using the getDaysInMonth function

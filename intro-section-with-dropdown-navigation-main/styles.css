@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-family: 'Epilogue', 'Courier New', Courier, monospace;
+    background-color: hsl(0, 0%, 98%);
+    height: fit-content;
+}
+
+@media only screen and (max-width: 600px)  {
+    .nav-bar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+        height: 7vh;
+        /* background-color: aqua; */
+    }
+
+    .hero-section{
+        height: 90vh;
+    }
+
+    .hero-image{
+        height: 45%;
+        /* background-color: blue; */
+        background-image: url('./images/image-hero-mobile.png');
+        background-size: cover;
+    }
+
+    .hero-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        padding: 30px 20px;
+    }
+
+    .hero-text > h1{
+        font-size: 35px;
+    }
+
+    .hero-text > p{
+        line-height: 25px;
+        color: hsl(0, 0%, 41%);
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .hero-text > button{
+        background-color:hsl(0, 0%, 8%);
+        color: white;
+        padding: 10px;
+        border-radius: 17px;
+        width: 150px;
+        height: 50px;
+        font-size: medium;
+        font-weight: 500;
+        font-family: 'Epilogue', 'Courier New', Courier, monospace;
+    }
+
+    .img-section{
+        /* background-color: aqua; */
+        height: 70px;
+        margin: 0px;
+        padding-top: 20px;
+    }
+
+    .img-row{
+        display: flex;        
+        justify-content: center;
+        gap: 35px;
+        /* background-color: blue; */
+    }
+
+    .menu{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 62%;
+        background-color: hsl(0, 0%, 98%);
+        /* display: none; */
+    }
+
+    .close-menu{
+        position: absolute;
+        right: 0px;
+        padding: 20px;
+    }
+    .menu-title{
+        display: flex;
+        gap: 14px;
+        margin-left: 40px;
+    }
+
+    .menu-options{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+        margin-left: 45px;
+        margin-top: 10px;
+    }
+    
+    .option{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .menu-list{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 40px 5px;
+        margin-top: 60px;
+    }
+
+    .menu-button{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .login-button > a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .menu-button > button{
+        width: 80%;
+        height: 45px;
+        border-radius: 17px;
+        font-size: medium;
+        font-family: 'Epilogue', 'Courier New', Courier, monospace;
+        background-color: hsl(0, 0%, 98%);
+    }
+}
+
