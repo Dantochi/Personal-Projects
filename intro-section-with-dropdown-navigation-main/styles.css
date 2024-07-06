@@ -9,6 +9,21 @@ body{
     font-family: 'Epilogue', 'Courier New', Courier, monospace;
     background-color: hsl(0, 0%, 98%);
     height: fit-content;
+    overflow-x: hidden;
+    transition: opacity .8s ease-in-out;
+}
+
+body::before{
+    content: '';
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: all 0.3s ease;
+    z-index: 1; /* Place the pseudo-element above the body content but below the menu */
+    pointer-events: none; /* Allow clicks to pass through */
 }
 
 @media only screen and (max-width: 600px)  {
@@ -27,6 +42,8 @@ body{
 
     .hero-image{
         height: 300px;
+        background-image: url('./images/image-hero-mobile.png');
+        background-size: cover;
     }
 
     .hero-text{
@@ -59,6 +76,7 @@ body{
         font-size: medium;
         font-weight: 500;
         font-family: 'Epilogue', 'Courier New', Courier, monospace;
+        border: none;
     }
 
     .img-section{
@@ -78,13 +96,20 @@ body{
     .menu{
         position: absolute;
         top: 0px;
-        right: 0px;
+        right: -300px;
         height: 705px;
-        width: 62%;
-        background-color: black;
+        width: 300px;
+        background-color: hsl(0, 0%, 98%);
         font-size: 14px;
         padding: 20px 0px;
+        /* transform: translateX(100%); */
         /* display: none; */
+        transition: all .5s ease;
+        z-index: 2;
+    }
+
+    .menu-slide-in{
+        right: 0;
     }
 
     .close-menu{
@@ -145,7 +170,139 @@ body{
 }
 
 .menu-title:hover, 
-.menu-list:hover{
+.menu-list:hover, 
+.menu-icon:hover,
+.close-menu{
     cursor: pointer;
 }
 
+.dimmed::before{
+    background: rgba(0, 0, 0, 0.5); /* Darken the background */
+}
+
+.rotate{
+    transform: rotate(180deg);
+}
+
+.show{
+    display: none;
+}
+
+.menu-title > span{
+    transition: transform 0.2s ease;
+}
+
+@media only screen and (min-width: 600px)  {
+    .nav-bar{
+        /* position: fixed; */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+        height: 50px;
+        /* background-color: aqua; */
+    }
+
+    .menu-icon, 
+    .close-menu{
+        display: none;
+    }
+
+    .menu{
+        display: flex;
+        font-size: 14px;
+        /* transform: translateX(100%); */
+        /* display: none; */
+        transition: all .5s ease;
+    }
+
+    .menu-list{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .menu-title > p{
+        display: inline;
+    }
+
+    .menu-button{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 0px 30px;
+    }
+
+    .hero-section{
+        height: auto;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.5fr;
+        align-items: center;
+    }
+
+    .hero-image{
+        height: 70%;
+        /* width: 50vw; */
+        background-image: url('./images/image-hero-desktop.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        order: 2;
+        background-position: center;
+        background-color: aqua;
+    }
+
+    .hero-text{
+        display: flex;
+        height: 70%;
+        /* width: 50%; */
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 25px;
+        /* padding: 30px 20px; */
+        order: 1;
+        /* padding: 100px; */
+        /* background-color: blue; */
+    }
+
+    .hero-text > h1{
+        font-size: 50px;
+    }
+
+    .hero-text > p{
+        line-height: 25px;
+        color: hsl(0, 0%, 41%);
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .hero-text > button{
+        background-color:hsl(0, 0%, 8%);
+        color: white;
+        padding: 10px;
+        border-radius: 17px;
+        width: 150px;
+        height: 50px;
+        font-size: medium;
+        font-weight: 500;
+        font-family: 'Epilogue', 'Courier New', Courier, monospace;
+        border: none;
+    }
+
+    .img-section{
+        /* background-color: aqua; */
+        height: 70px;
+        margin: 0px;
+        padding-top: 20px;
+    }
+
+    .img-row{
+        display: flex;        
+        justify-content: center;
+        gap: 35px;
+        /* background-color: blue; */
+    }
+
+}
