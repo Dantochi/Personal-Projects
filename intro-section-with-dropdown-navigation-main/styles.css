@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
 
-*{
+* {
     padding: 0px;
     margin: 0px;
 }
 
-body{
+body {
     font-family: 'Epilogue', 'Courier New', Courier, monospace;
     background-color: hsl(0, 0%, 98%);
-    height: fit-content;
+    height: 100vh;
     overflow-x: hidden;
     transition: opacity .8s ease-in-out;
+    display: flex;
+    flex-direction: column;
 }
 
-body::before{
+body::before {
     content: '';
     position: fixed;
     top: 0px;
@@ -22,31 +24,58 @@ body::before{
     height: 100%;
     background: rgba(0, 0, 0, 0);
     transition: all 0.3s ease;
-    z-index: 1; /* Place the pseudo-element above the body content but below the menu */
-    pointer-events: none; /* Allow clicks to pass through */
+    z-index: 1;
+    /* Place the pseudo-element above the body content but below the menu */
+    pointer-events: none;
+    /* Allow clicks to pass through */
 }
 
-@media only screen and (max-width: 600px)  {
-    .nav-bar{
+.login-button>a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu-button>button {
+    width: 80%;
+    height: 45px;
+    border-radius: 17px;
+    font-size: medium;
+    font-family: 'Epilogue', 'Courier New', Courier, monospace;
+    background-color: hsl(0, 0%, 98%);
+}
+
+.menu-title:hover,
+.menu-list:hover,
+.menu-icon:hover,
+#register-link:hover,
+.close-menu {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-bar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0px 20px;
+        padding: 20px 20px;
         height: 50px;
         /* background-color: aqua; */
     }
 
-    .hero-section{
+    .hero-section {
         height: 700px;
     }
 
-    .hero-image{
+    .hero-image {
         height: 300px;
         background-image: url('./images/image-hero-mobile.png');
-        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
+        /* background-color: aqua; */
+        background-position: center;
     }
 
-    .hero-text{
+    .text-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -55,19 +84,19 @@ body::before{
         padding: 30px 20px;
     }
 
-    .hero-text > h1{
+    .text-container>h1 {
         font-size: 35px;
     }
 
-    .hero-text > p{
+    .text-container>p {
         line-height: 25px;
         color: hsl(0, 0%, 41%);
         font-size: 18px;
         text-align: center;
     }
 
-    .hero-text > button{
-        background-color:hsl(0, 0%, 8%);
+    .text-container>button {
+        background-color: hsl(0, 0%, 8%);
         color: white;
         padding: 10px;
         border-radius: 17px;
@@ -79,21 +108,21 @@ body::before{
         border: none;
     }
 
-    .img-section{
+    .img-section {
         /* background-color: aqua; */
         height: 70px;
         margin: 0px;
         padding-top: 20px;
     }
 
-    .img-row{
-        display: flex;        
+    .img-row {
+        display: flex;
         justify-content: center;
         gap: 35px;
         /* background-color: blue; */
     }
 
-    .menu{
+    .menu {
         position: absolute;
         top: 0px;
         right: -300px;
@@ -108,22 +137,23 @@ body::before{
         z-index: 2;
     }
 
-    .menu-slide-in{
+    .menu-slide-in {
         right: 0;
     }
 
-    .close-menu{
+    .close-menu {
         position: absolute;
         right: 0px;
         padding: 5px 20px;
     }
-    .menu-title{
+
+    .menu-title {
         display: flex;
         gap: 11px;
         margin-left: 40px;
     }
 
-    .menu-options{
+    .menu-options {
         display: flex;
         flex-direction: column;
         gap: 19px;
@@ -131,14 +161,14 @@ body::before{
         margin-left: 45px;
         margin-top: 10px;
     }
-    
-    .option{
+
+    .option {
         display: flex;
         gap: 10px;
         align-items: center;
     }
 
-    .menu-list{
+    .menu-list {
         display: flex;
         flex-direction: column;
         gap: 25px;
@@ -146,140 +176,144 @@ body::before{
         margin-top: 10px;
     }
 
-    .menu-button{
+    .menu-button {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 20px;
     }
 
-    .login-button > a{
-        text-decoration: none;
-        color: black;
-    }
-
-    .menu-button > button{
-        width: 80%;
-        height: 45px;
-        border-radius: 17px;
-        font-size: medium;
-        font-family: 'Epilogue', 'Courier New', Courier, monospace;
-        background-color: hsl(0, 0%, 98%);
-    }
-
 }
 
-.menu-title:hover, 
-.menu-list:hover, 
-.menu-icon:hover,
-.close-menu{
-    cursor: pointer;
+.dimmed::before {
+    background: rgba(0, 0, 0, 0.5);
+    /* Darken the background */
 }
 
-.dimmed::before{
-    background: rgba(0, 0, 0, 0.5); /* Darken the background */
-}
-
-.rotate{
+.rotate {
     transform: rotate(180deg);
 }
 
-.show{
+.show {
     display: none;
 }
 
-.menu-title > span{
+.menu-title>span {
     transition: transform 0.2s ease;
 }
 
-@media only screen and (min-width: 600px)  {
-    .nav-bar{
+@media only screen and (min-width: 600px) {
+    .nav-bar {
         /* position: fixed; */
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0px 20px;
-        height: 50px;
+        flex-direction: row;
+        align-content: space-around;
+        /* justify-content: space-around; */
+        /* justify-content: center; */
+
+        height: 70px;
         /* background-color: aqua; */
     }
 
-    .menu-icon, 
-    .close-menu{
+    .site-logo {
+        /* background-color: blueviolet; */
+        display: flex;
+        align-items: center;
+        margin-left: 40px;
+    }
+
+    .menu-icon,
+    .close-menu {
         display: none;
     }
 
-    .menu{
+    .menu {
         display: flex;
         font-size: 14px;
         /* transform: translateX(100%); */
         /* display: none; */
+        justify-content: space-between;
         transition: all .5s ease;
+        /* background-color: cadetblue; */
+        flex: 1;
     }
 
-    .menu-list{
+    .menu-list {
         display: flex;
         align-items: center;
-        gap: 20px;
+        column-gap: 3rem;
+        /* background-color: aqua; */
+        margin-left: 30px;
     }
 
-    .menu-title > p{
+
+    .menu-title{
+        display: flex;
+    }
+
+    .menu-title>p {
         display: inline;
     }
 
-    .menu-button{
+    .menu-button {
         display: flex;
         align-items: center;
         gap: 20px;
         padding: 0px 30px;
+        /* background-color: chocolate; */
+        /* margin-left: auto; */
+        float: right;
     }
 
-    .hero-section{
+    .hero-section {
         height: auto;
         width: 100vw;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 0.5fr;
-        align-items: center;
+        display: flex;
+        /* background-color: burlywood; */
+        flex: 1;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-top: 40px;
     }
 
-    .hero-image{
-        height: 70%;
-        /* width: 50vw; */
+    .hero-image {
+        width: 50vw;
         background-image: url('./images/image-hero-desktop.png');
         background-size: contain;
         background-repeat: no-repeat;
-        order: 2;
+        /* background-color: aqua; */
         background-position: center;
-        background-color: aqua;
+        height: 70vh;
+        order: 2;
     }
 
-    .hero-text{
+    .hero-text {
         display: flex;
-        height: 70%;
-        /* width: 50%; */
+        height: 70vh;
+        width: 40%;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        gap: 25px;
-        /* padding: 30px 20px; */
-        order: 1;
-        /* padding: 100px; */
         /* background-color: blue; */
+        order: 1;
+        padding-left: 60px;
+
     }
 
-    .hero-text > h1{
+    .text-container>h1 {
         font-size: 50px;
     }
 
-    .hero-text > p{
+    .text-container>p {
         line-height: 25px;
         color: hsl(0, 0%, 41%);
         font-size: 18px;
         text-align: left;
+        margin: 30px 0px;
     }
 
-    .hero-text > button{
-        background-color:hsl(0, 0%, 8%);
+    .text-container>button {
+        background-color: hsl(0, 0%, 8%);
         color: white;
         padding: 10px;
         border-radius: 17px;
@@ -289,20 +323,71 @@ body::before{
         font-weight: 500;
         font-family: 'Epilogue', 'Courier New', Courier, monospace;
         border: none;
+        margin-bottom: 30px;
+        transition: background-color .4s ease;
+
     }
 
-    .img-section{
+    .text-container {
+        margin-top: 50px;
+    }
+
+    .text-container > button:hover{
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+    }
+
+    .img-section {
         /* background-color: aqua; */
-        height: 70px;
-        margin: 0px;
+        /* margin: 0px; */
         padding-top: 20px;
+        /* justify-self: flex-end; */
+        margin-top: auto;
     }
 
-    .img-row{
-        display: flex;        
+    .img-row {
+        display: flex;
         justify-content: center;
         gap: 35px;
         /* background-color: blue; */
+    }
+
+    .menu-button>button {
+        padding: 0px 20px;
+    }
+
+    .menu-options{
+        position: absolute;
+        background-color: white;
+        top: 60px;
+        width: 7rem;
+        padding: 15px 10px 0px 10px;
+        border-radius: 10px;
+        row-gap: 20px;
+        box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+    }
+
+    .option p{
+        display: inline;
+    }
+
+    .option{
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .menu-title > p{
+        color: hsl(0, 0%, 41%);
+        font-weight: 500;
+    }
+
+    .menu-title > p:hover{
+        color: black;
     }
 
 }
